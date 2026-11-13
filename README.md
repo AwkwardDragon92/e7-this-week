@@ -91,7 +91,7 @@ Statuses: **active** = a source states a future end date; **unconfirmed** = list
 
 1. Import this repo in Vercel (framework: Next.js, defaults are fine).
 2. Storage → add **Neon Postgres** from the Marketplace and connect it to the project; it sets `DATABASE_URL`.
-3. Set env vars: `NEXT_PUBLIC_SITE_URL=https://epic7.awkwarddragon.com`, `ADMIN_TOKEN` (`openssl rand -hex 24`), and optionally `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, `OWNER_EMAIL`, `RESEND_FROM`.
+3. Set env vars: `NEXT_PUBLIC_SITE_URL=https://epic7.awkwarddragon.com`, `ADMIN_TOKEN` (`openssl rand -hex 24`), and optionally `RESEND_API_KEY`, `RESEND_SEGMENT_ID`, `OWNER_EMAIL`, `RESEND_FROM`.
 4. Run migrations + seed once against the Neon DB from your machine: `vercel env pull .env.local && npm run db:migrate && npm run db:seed`.
 5. Domains → add `epic7.awkwarddragon.com`, then at your DNS provider add a `CNAME` record `epic7` → `cname.vercel-dns.com` (Vercel shows the exact value).
 6. Redeploy so pages pick up the DB.
@@ -104,6 +104,7 @@ Statuses: **active** = a source states a future end date; **unconfirmed** = list
 | `NEXT_PUBLIC_SITE_URL` | yes | Canonical URL for metadata, sitemap, OG |
 | `ADMIN_TOKEN` | for admin API | Bearer token (16+ chars) |
 | `RESEND_API_KEY` | optional | Resend API key |
-| `RESEND_AUDIENCE_ID` | optional | Signups get added to this audience |
+| `RESEND_SEGMENT_ID` | optional | Signups get added to this Resend segment (needs a full-access key; sending-only keys skip it and signups stay in Postgres) |
+| `RESEND_AUDIENCE_ID` | optional | Legacy fallback for `RESEND_SEGMENT_ID` |
 | `OWNER_EMAIL` | optional | Where sponsor inquiries get emailed |
 | `RESEND_FROM` | optional | Sender for owner emails (verified domain); defaults to Resend's onboarding sender |
