@@ -1,0 +1,25 @@
+{
+ "checked": "2026-11-12",
+ "sources": [
+  {
+   "name": "Gachafeed",
+   "url": "https://gachafeed.moe/epic7/codes/",
+   "used_for": "codes (found/end dates, status)"
+  },
+  {
+   "name": "Redeem Code Tracker",
+   "url": "https://www.redeem-code-tracker.com/games/epic-seven",
+   "used_for": "codes (rewards, added dates, end dates)"
+  },
+  {
+   "name": "BannerHistory",
+   "url": "https://bannerhistory.app/en/e7-pickup-history",
+   "used_for": "drop-rate-up banner archive with links to official STOVE notices"
+  },
+  {
+   "name": "Epic Seven Wiki (epicseven.site)",
+   "url": "https://www.epicseven.site/wiki/next-banner",
+   "used_for": "mystic banner and current events"
+  }
+ ]
+}

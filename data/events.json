@@ -1,0 +1,57 @@
+[
+ {
+  "id": "secret-rabbit-hole",
+  "name": "Secret Rabbit♥Hole side story",
+  "kind": "side-story",
+  "description": "Bunny Girl side story with Level 88 equipment rewards. Collecting all five Bunny Girl heroes and skins on the event's Quick Link page rewards Self-Proclaimed Detective Toby.",
+  "rewards": "Level 88 equipment; Self-Proclaimed Detective Toby (collection reward)",
+  "starts_at": null,
+  "ends_at": "2026-12-10T00:00:00Z",
+  "time_precision": "date",
+  "source_url": "https://www.epicseven.site/wiki/next-banner"
+ },
+ {
+  "id": "yufine-preview-video",
+  "name": "Bunny Girl Mafia Yufine preview video event",
+  "kind": "event",
+  "description": "Watch the new hero preview video.",
+  "rewards": "1 Leif",
+  "starts_at": "2026-11-05T00:00:00Z",
+  "ends_at": "2026-11-26T00:00:00Z",
+  "time_precision": "date",
+  "source_url": "https://www.epicseven.site/wiki/next-banner"
+ },
+ {
+  "id": "moro-try-hero-preview",
+  "name": "Bunny Girl Great Detective Moro try-hero & preview video events",
+  "kind": "event",
+  "description": "Try-hero and preview-video events for the new Moonlight hero.",
+  "rewards": "1 Leif each",
+  "starts_at": null,
+  "ends_at": "2026-11-19T00:00:00Z",
+  "time_precision": "date",
+  "source_url": "https://www.epicseven.site/wiki/next-banner"
+ },
+ {
+  "id": "foundry-free-summons",
+  "name": "Steam Foundry server: 20 free Covenant Summons a day",
+  "kind": "event",
+  "description": "Players on the Steam Foundry server receive 20 free Covenant Summons a day.",
+  "rewards": "20 Covenant Summons per day",
+  "starts_at": null,
+  "ends_at": "2026-12-31T00:00:00Z",
+  "time_precision": "date",
+  "source_url": "https://www.epicseven.site/wiki/next-banner"
+ },
+ {
+  "id": "coin-shops-2026-11",
+  "name": "Covenant & Galaxy Coin Shop: November heroes",
+  "kind": "shop",
+  "description": "Covenant Coin Shop: Fenne, Abigail, Ray, Destina, Violet. Galaxy Coin Shop: Witch of the Mere Tenebria, Abyssal Yufine, Eternal Wanderer Ludwig, Dragon King Sharun, Silver Blade Aramintha. Both shops now offer five heroes a month instead of three.",
+  "rewards": null,
+  "starts_at": "2026-11-01T00:00:00Z",
+  "ends_at": null,
+  "time_precision": "date",
+  "source_url": "https://www.epicseven.site/wiki/next-banner"
+ }
+]
