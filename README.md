@@ -58,6 +58,7 @@ curl -H "$T" -H 'Content-Type: application/json' $S/api/admin/approve \
   -d '{"id":12,"action":"approve","rewards":"3 Leif","expires_at":"2026-11-20T14:59:00Z"}'
 curl -H "$T" -H 'Content-Type: application/json' $S/api/admin/approve -d '{"id":13,"action":"reject","note":"fake"}'
 curl -H "$T" $S/api/admin/stats                     # subscribers, pageviews, top pages, referrers, rerun demand, errors
+curl -H "$T" -H 'Content-Type: application/json' $S/api/admin/delete -d '{"email":"someone@x.com"}'  # remove a subscriber (or {"submission_id":13})
 curl -H "$T" $S/api/admin/searches                  # zero-result searches (last 30 days)
 curl -H "$T" $S/api/admin/sponsors                  # sponsors, weeks, clicks, inquiries
 
