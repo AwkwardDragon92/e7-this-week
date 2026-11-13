@@ -33,13 +33,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-dvh">
         {sponsor && <SponsorBar weekId={sponsor.week_id} slug={sponsor.slug} name={sponsor.name} message={sponsor.message} cta={sponsor.cta} />}
         <header className="sticky top-0 z-20 border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-3">
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2 sm:flex-nowrap sm:py-3">
             <Link href="/" className="shrink-0 font-black tracking-tight text-white">
               E7 <span className="text-violet-400">This Week</span>
             </Link>
-            <nav className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto text-sm [scrollbar-width:none]">
+            <nav className="grid w-full grid-cols-5 text-sm sm:flex sm:w-auto sm:flex-1 sm:gap-1">
               {nav.map((n) => (
-                <Link key={n.href} href={n.href} className="shrink-0 rounded-lg px-2.5 py-1.5 text-zinc-300 hover:bg-zinc-800 hover:text-white">
+                <Link key={n.href} href={n.href} className="rounded-lg px-1 py-1.5 text-center text-zinc-300 hover:bg-zinc-800 hover:text-white sm:px-2.5">
                   {n.label}
                 </Link>
               ))}
