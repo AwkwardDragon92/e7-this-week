@@ -9,7 +9,9 @@
     "lint": "eslint",
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mjs",
     "db:seed": "node --env-file-if-exists=.env.local scripts/seed.mjs",
-    "build:vercel": "node scripts/migrate.mjs --optional && node scripts/seed.mjs --if-empty --optional && next build"
+    "build:vercel": "node scripts/migrate.mjs --optional && node scripts/seed.mjs --if-empty --optional && next build",
+    "newsletter:preview": "node --env-file-if-exists=.env.local scripts/newsletter.mjs --preview newsletter-preview.html",
+    "newsletter:draft": "node --env-file-if-exists=.env.local scripts/newsletter.mjs --draft"
   },
   "dependencies": {
     "next": "16.4.6",

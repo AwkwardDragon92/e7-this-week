@@ -109,3 +109,9 @@ Statuses: **active** = a source states a future end date; **unconfirmed** = list
 | `RESEND_AUDIENCE_ID` | optional | Legacy fallback for `RESEND_SEGMENT_ID` |
 | `OWNER_EMAIL` | optional | Where sponsor inquiries get emailed |
 | `RESEND_FROM` | optional | Sender for owner emails (verified domain); defaults to Resend's onboarding sender |
+
+## Weekly newsletter (Thursday)
+
+`npm run newsletter:draft` builds the upcoming Thursday's issue from the live database (via `/api/admin/newsletter-data`, needs `ADMIN_TOKEN`) and creates or updates a **draft** Resend broadcast for the `RESEND_SEGMENT_ID` segment from `RESEND_FROM`. It never sends: review the draft in Resend and hit send there.
+`npm run newsletter:preview` writes `newsletter-preview.html` / `.txt` without touching Resend. Add `--local` to use `data/*.json`, `--date YYYY-MM-DD` for a different Thursday.
+Five picks: working codes, current banner, next banner (with start date), rerun watch, events. The "Sponsored by" line shows the sponsor week covering send time, or "Your game/creator here" linking to /sponsor. Unsubscribe uses Resend's `{{{RESEND_UNSUBSCRIBE_URL}}}`.
