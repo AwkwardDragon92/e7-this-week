@@ -10,8 +10,8 @@ export async function GET(req: Request) {
   if (!isAdmin(req)) return unauthorized();
   const sql = getSql();
   const [codes, banners, events] = await Promise.all([getCodes(), getBanners(), getEvents()]);
-  let sponsors: unknown[] = [];
-  let rerunDemand: unknown[] = [];
+  let sponsors: readonly unknown[] = [];
+  let rerunDemand: readonly unknown[] = [];
   if (sql) {
     sponsors = await sql`
       SELECT s.slug, s.name, w.message, w.cta, w.starts_at, w.ends_at
