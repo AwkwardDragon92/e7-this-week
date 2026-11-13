@@ -92,7 +92,7 @@ Statuses: **active** = a source states a future end date; **unconfirmed** = list
 1. Import this repo in Vercel (framework: Next.js, defaults are fine).
 2. Storage → add **Neon Postgres** from the Marketplace and connect it to the project; it sets `DATABASE_URL`.
 3. Set env vars: `NEXT_PUBLIC_SITE_URL=https://epic7.awkwarddragon.com`, `ADMIN_TOKEN` (`openssl rand -hex 24`), and optionally `RESEND_API_KEY`, `RESEND_SEGMENT_ID`, `OWNER_EMAIL`, `RESEND_FROM`.
-4. Run migrations + seed once against the Neon DB from your machine: `vercel env pull .env.local && npm run db:migrate && npm run db:seed`.
+4. Set the project's Build Command to `npm run build:vercel`. Every build then runs migrations (idempotent) and seeds only if the `codes` table is empty, so no connection string ever leaves Vercel. To force a re-seed from your machine: `vercel env pull .env.local && npm run db:seed`.
 5. Domains → add `epic7.awkwarddragon.com`, then at your DNS provider add a `CNAME` record `epic7` → `cname.vercel-dns.com` (Vercel shows the exact value).
 6. Redeploy so pages pick up the DB.
 

@@ -2,14 +2,26 @@
 import postgres from "postgres";
 import { readFileSync } from "node:fs";
 
-const url = process.env.DATABASE_URL;
+const url = process.env.DATABASE_URL || process.env.DATABASE_POSTGRES_URL || process.env.POSTGRES_URL;
+const optional = process.argv.includes("--optional");
 if (!url) {
+  if (optional) {
+    console.log("No DATABASE_URL; skipping (site will use data/*.json).");
+    process.exit(0);
+  }
   console.error("DATABASE_URL is not set (put it in .env.local or the environment).");
   process.exit(1);
 }
 const load = (n) => JSON.parse(readFileSync(new URL(`../data/${n}.json`, import.meta.url), "utf8"));
 const sql = postgres(url, { max: 1, onnotice: () => {} });
 try {
+  if (process.argv.includes("--if-empty")) {
+    const [{ n }] = await sql`SELECT count(*)::int AS n FROM codes`;
+    if (n > 0) {
+      console.log(`codes table already has ${n} rows; skipping seed (run "npm run db:seed" to force).`);
+      process.exit(0);
+    }
+  }
   const codes = load("codes");
   for (const c of codes) {
     await sql`

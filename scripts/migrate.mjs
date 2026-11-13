@@ -3,8 +3,13 @@ import postgres from "postgres";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const url = process.env.DATABASE_URL;
+const url = process.env.DATABASE_URL || process.env.DATABASE_POSTGRES_URL || process.env.POSTGRES_URL;
+const optional = process.argv.includes("--optional");
 if (!url) {
+  if (optional) {
+    console.log("No DATABASE_URL; skipping (site will use data/*.json).");
+    process.exit(0);
+  }
   console.error("DATABASE_URL is not set (put it in .env.local or the environment).");
   process.exit(1);
 }

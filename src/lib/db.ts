@@ -5,8 +5,12 @@ type Sql = ReturnType<typeof postgres>;
 const g = globalThis as unknown as { __e7sql?: Sql | null };
 
 /** Returns a Postgres client, or null when DATABASE_URL is not configured. */
+export function dbUrl() {
+  return process.env.DATABASE_URL || process.env.DATABASE_POSTGRES_URL || process.env.POSTGRES_URL || "";
+}
+
 export function getSql(): Sql | null {
-  const url = process.env.DATABASE_URL;
+  const url = dbUrl();
   if (!url) return null;
   if (g.__e7sql === undefined || g.__e7sql === null) {
     g.__e7sql = postgres(url, {
@@ -21,7 +25,7 @@ export function getSql(): Sql | null {
 }
 
 export function hasDb() {
-  return Boolean(process.env.DATABASE_URL);
+  return Boolean(dbUrl());
 }
 
 /** Best-effort error logging into the errors table. Never throws. */

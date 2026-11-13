@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mjs",
-    "db:seed": "node --env-file-if-exists=.env.local scripts/seed.mjs"
+    "db:seed": "node --env-file-if-exists=.env.local scripts/seed.mjs",
+    "build:vercel": "node scripts/migrate.mjs --optional && node scripts/seed.mjs --if-empty --optional && next build"
   },
   "dependencies": {
     "next": "16.4.6",

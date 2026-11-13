@@ -15,7 +15,10 @@ export async function GET(req: Request) {
       (SELECT count(*)::int FROM submissions WHERE status = 'pending') AS pending_submissions,
       (SELECT count(*)::int FROM sponsor_inquiries WHERE created_at > now() - interval '30 days') AS sponsor_inquiries_30d,
       (SELECT count(*)::int FROM sponsor_clicks WHERE created_at > now() - interval '30 days') AS sponsor_clicks_30d,
-      (SELECT count(*)::int FROM errors WHERE created_at > now() - interval '1 day') AS errors_24h`;
+      (SELECT count(*)::int FROM errors WHERE created_at > now() - interval '1 day') AS errors_24h,
+      (SELECT count(*)::int FROM codes) AS content_codes,
+      (SELECT count(*)::int FROM banners) AS content_banners,
+      (SELECT count(*)::int FROM events) AS content_events`;
   const topPages = await sql`SELECT path, count(*)::int AS views FROM pageviews WHERE created_at > now() - interval '30 days' GROUP BY path ORDER BY views DESC LIMIT 20`;
   const referrers = await sql`SELECT coalesce(referrer, '(direct)') AS referrer, count(*)::int AS views FROM pageviews WHERE created_at > now() - interval '30 days' GROUP BY 1 ORDER BY views DESC LIMIT 20`;
   const daily = await sql`SELECT date_trunc('day', created_at)::date AS day, count(*)::int AS views FROM pageviews WHERE created_at > now() - interval '30 days' GROUP BY 1 ORDER BY 1`;
